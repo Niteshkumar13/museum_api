@@ -22,8 +22,9 @@ fs.readdir(directoryPath, (err, files) => {
       });
   });
   });
-app.get('/api', (req, res) => {
-res.json(Array(about,new_val))
+app.get('/', (req, res) => {
+// res.json(Array(about,new_val));
+  res.sendFile(directoryPath+'/20230716_142615.jpg')
   });
 app.listen(3002,(req,res)=>{
     console.log("code is working successfully")
