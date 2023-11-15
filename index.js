@@ -1,8 +1,8 @@
+
 const express = require("express");
 const path = require('path');
 const app = express();
 const fs = require('fs');
-const { send } = require("process");
 const directoryPath = path.join(__dirname, 'images');
 const about = [{
   header:'Patna Museum',
@@ -18,14 +18,14 @@ fs.readdir(directoryPath, (err, files) => {
     imageFiles.forEach((item,index)=>{
       new_val.push({
           id:index,
-          url:item
+          url:'https://github.com/Niteshkumar13/museum_api/blob/main/images/'+item+'?raw=true'
       });
   });
   });
 app.get('/', (req, res) => {
-// res.json(Array(about,new_val));
-  res.sendFile(directoryPath+'/20230716_142615.jpg')
+res.json(Array(about,new_val))
   });
-app.listen(3002,(req,res)=>{
+const PORT = process.env.PORT||3000;
+app.listen(PORT,(req,res)=>{
     console.log("code is working successfully")
 })
