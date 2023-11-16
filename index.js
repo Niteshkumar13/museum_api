@@ -25,6 +25,14 @@ fs.readdir(directoryPath, (err, files) => {
 app.get('/', (req, res) => {
 res.json(Array(about,new_val))
   });
+app.get('/random', (req, res) => {
+    const x = Math.floor(Math.random() * 39);
+    res.json(Array(about,Array(new_val[x])))
+  });
+  app.get('/:number', (req, res) => {
+      const datas = new_val.slice(0,req.params.number);
+      res.json(Array(about,datas))
+  });
 const PORT = process.env.PORT||3000;
 app.listen(PORT,(req,res)=>{
     console.log("code is working successfully")
